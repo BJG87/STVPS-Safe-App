@@ -83,9 +83,27 @@
           html += '<label for="name">Name</label>';
           html += '<input type="text" name="name" />';
           html += '<br>';
-          html += '<input type="button" id="send" value="Send" />';
+          html += '<button type="submit" id="send">Send</button>';
           html += '</form>';
           document.getElementById('formDiv').innerHTML = html;
+          
+          var form = document.getElementById('form');
+          var db = getFirestore();
+          form.addEventListener('submit', async e => {
+            // Prevent the default form redirect
+            e.preventDefault();
+            // Write a new message to the database collection "guestbook"
+            addDoc(collection(db, 'messages'), {
+              //text: input.value,
+              //timestamp: Date.now(),
+              //name: auth.currentUser.displayName,
+              //userId: auth.currentUser.uid
+              text: 'FirstTest',
+              timestamp: Date.now()
+            });
+            return false;
+          });
+
         } else {
           //Show Not Authorised
           var html = '';

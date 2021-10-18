@@ -2,6 +2,7 @@
 import './style.css';
 import firebase from 'firebase';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { getFirestore, addDoc, collection } from 'firebase/firestore';
 const provider = new GoogleAuthProvider();
 
 /*
