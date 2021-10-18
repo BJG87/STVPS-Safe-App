@@ -2,7 +2,13 @@
 import './style.css';
 import { initializeApp } from 'firebase/app';
 //import firebase from 'firebase';
-import {GoogleAuthProvider,getAuth,signInWithPopup,signOut,onAuthStateChanged} from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+} from 'firebase/auth';
 import { getFirestore, addDoc, collection } from 'firebase/firestore';
 import * as firebaseui from 'firebaseui';
 
@@ -12,7 +18,7 @@ const firebaseConfig = {
   projectId: 'stvps-safe-app',
   storageBucket: 'stvps-safe-app.appspot.com',
   messagingSenderId: '628432699289',
-  appId: '1:628432699289:web:5dacd9e8687b0add921d08',
+  appId: '1:628432699289:web:5dacd9e8687b0add921d08'
 };
 console.log('Hide Dashboard');
 document.getElementById('dashboard').style.display = 'none';
