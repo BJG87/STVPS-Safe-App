@@ -2,13 +2,7 @@
 import './style.css';
 import { initializeApp } from 'firebase/app';
 //import firebase from 'firebase';
-import {
-  GoogleAuthProvider,
-  getAuth,
-  signInWithPopup,
-  signOut,
-  onAuthStateChanged,
-} from 'firebase/auth';
+import {GoogleAuthProvider,getAuth,signInWithPopup,signOut,onAuthStateChanged} from 'firebase/auth';
 import { getFirestore, addDoc, collection } from 'firebase/firestore';
 import * as firebaseui from 'firebaseui';
 
