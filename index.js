@@ -1,12 +1,13 @@
 // Import stylesheets
 
-//import './style.css';
+import './style.css';
 //import { initializeApp } from 'firebase/app';
 //import { GoogleAuthProvider, getAuth, onAuthStateChanged } from 'firebase/auth';
 // v9 compat packages are API compatible with v8 code
 //import firebase from 'firebase/app';
-//import {initializeApp} from 'firebase/compat/app';
-//import { GoogleAuthProvider } from 'firebase/compat/auth';
+import firebase from 'firebase/compat/app';
+import { initializeApp } from 'firebase/compat/app';
+import { GoogleAuthProvider } from 'firebase/compat/auth';
 //import 'firebase/compat/firestore';
 //import firebase from 'firebase';
 //import { GoogleAuthProvider,
@@ -19,14 +20,14 @@
 //import * as firebaseui from 'firebaseui';
 //import * as firebase from 'firebase';
 
-/*const firebaseConfig = {
+const firebaseConfig = {
   apiKey: 'AIzaSyCVKn4k0QWRpEOJHgbl7ALgYUNV7o9kwGQ',
   authDomain: 'stvps-safe-app.firebaseapp.com',
   projectId: 'stvps-safe-app',
   storageBucket: 'stvps-safe-app.appspot.com',
   messagingSenderId: '628432699289',
   appId: '1:628432699289:web:5dacd9e8687b0add921d08',
-};*/
+};
 
 console.log('Hide Dashboard');
 document.getElementById('dashboard').style.display = 'none';
@@ -39,11 +40,11 @@ console.log('Setup Event listener');
 //const app = initializeApp(firebaseConfig);
 //console.log(app);
 //var auth = getAuth(app);
-//const app = firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 //var db = getFirestore(app);
 // } catch (e) {}
 //var provider = new GoogleAuthProvider();
-// var provider = new firebase.auth.GoogleAuthProvider();
+var provider = new firebase.auth.GoogleAuthProvider();
 //const auth = getAuth();
 /*
   signInWithPopup(auth, provider)
