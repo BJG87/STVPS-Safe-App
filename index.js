@@ -1,16 +1,23 @@
 // Import stylesheets
+
 import './style.css';
 import { initializeApp } from 'firebase/app';
+//import { GoogleAuthProvider, getAuth, onAuthStateChanged } from 'firebase/auth';
+// v9 compat packages are API compatible with v8 code
+//import firebase from 'firebase/app';
+//import {initializeApp} from 'firebase/compat/app';
+//import { GoogleAuthProvider } from 'firebase/compat/auth';
+//import 'firebase/compat/firestore';
 //import firebase from 'firebase';
-import {
-  GoogleAuthProvider,
-  getAuth,
-  signInWithPopup,
-  signOut,
-  onAuthStateChanged,
-} from 'firebase/auth';
-import { getFirestore, addDoc, collection } from 'firebase/firestore';
-import * as firebaseui from 'firebaseui';
+//import { GoogleAuthProvider,
+////getAuth,
+//signInWithPopup,
+//signOut,
+//onAuthStateChanged,
+//'firebase/auth';
+//import { getFirestore, addDoc, collection } from 'firebase/firestore';
+//import * as firebaseui from 'firebaseui';
+//import * as firebase from 'firebase';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCVKn4k0QWRpEOJHgbl7ALgYUNV7o9kwGQ',
@@ -18,8 +25,9 @@ const firebaseConfig = {
   projectId: 'stvps-safe-app',
   storageBucket: 'stvps-safe-app.appspot.com',
   messagingSenderId: '628432699289',
-  appId: '1:628432699289:web:5dacd9e8687b0add921d08'
+  appId: '1:628432699289:web:5dacd9e8687b0add921d08',
 };
+
 console.log('Hide Dashboard');
 document.getElementById('dashboard').style.display = 'none';
 console.log('Setup Event listener');
@@ -27,9 +35,17 @@ document.getElementById('login').addEventListener('click', GoogleLogin);
 
 function GoogleLogin() {
   console.log('Login Btn Call');
-  initializeApp(firebaseConfig);
-  const provider = new GoogleAuthProvider();
-  const auth = getAuth();
+  try {
+    //const app = initializeApp(firebaseConfig);
+    //console.log(app);
+    //var auth = getAuth(app);
+    //const app = firebase.initializeApp(firebaseConfig);
+    //var db = getFirestore(app);
+  } catch (e) {}
+  //var provider = new GoogleAuthProvider();
+  // var provider = new firebase.auth.GoogleAuthProvider();
+  //const auth = getAuth();
+  /*
   signInWithPopup(auth, provider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -50,8 +66,8 @@ function GoogleLogin() {
       const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
     });
+    */
 }
-
 //<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
 
 //<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
