@@ -2,18 +2,121 @@
 
 import './style.css';
 import { initializeApp } from 'firebase/app';
-import {
+import {GoogleAuthProvider, auth, getAuth, signInWithPopup, signOut, onAuthStateChanged} from 'firebase/compat/auth';
+/*import {
   GoogleAuthProvider,
   getAuth,
   signInWithPopup,
   signOut,
   onAuthStateChanged,
-} from 'firebase/auth';
+} from 'firebase/auth';*/
 // v9 compat packages are API compatible with v8 code
-import firebase from 'firebase/app';
-import firebase from 'firebase/compat/app';
-import { initializeApp } from 'firebase/compat/app';
-import { GoogleAuthProvider, getAuth } from 'firebase/compat/auth';
+//import firebase from 'firebase/app';
+//import firebase from 'firebase/compat/app';
+
+//import {initializeApp} from 'firebase/compat/app';
+//import { initializeApp } from 'firebase/compat/app';
+//import { GoogleAuthProvider, getAuth } from 'firebase/compat/auth';
+//import * from 'firebase';
+//import firebase from 'firebase/compat/app'
+//import {initializeApp} from 'firebase/compat/app'
+//import firebase from 'firebase/compat/app';
+//import {GoogleAuthProvider, auth, getAuth, signInWithPopup, signOut, onAuthStateChanged} from 'firebase/compat/auth';
+//import 'firebase/compat/firestore';
+
+
+
+ // Initialize Firebase
+ const firebaseConfig = {
+    apiKey: 'AIzaSyCVKn4k0QWRpEOJHgbl7ALgYUNV7o9kwGQ',
+    authDomain: 'stvps-safe-app.firebaseapp.com',
+    projectId: 'stvps-safe-app',
+    storageBucket: 'stvps-safe-app.appspot.com',
+    messagingSenderId: '628432699289',
+    appId: '1:628432699289:web:5dacd9e8687b0add921d08',
+  };
+
+ const firebaseApp = initializeApp(firebaseConfig);
+
+ document.getElementById('dashboard').style.display = 'none';
+
+ document.getElementById('login').addEventListener('click', GoogleLogin);
+ document.getElementById('logout').addEventListener('click', LogoutUser);
+ //const auth = firebase.auth();
+ //let provider = new firebase.auth.GoogleAuthProvider();
+
+ function GoogleLogin() {
+  console.log('Login Btn Call');
+  const auth = getAuth(firebaseApp);
+  onAuthStateChanged(auth, user => {
+    // Check for user status
+  });
+  /*firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((res) => {
+      console.log(res.user);
+      document.getElementById('LoginScreen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      showUserDetails(res.user);
+    })
+    .catch((e) => {
+      console.log(e);
+    });*/
+}
+
+function showUserDetails(user) {
+  document.getElementById('userDetails').innerHTML = `
+    <img src="${user.photoURL}" style="width:10%">
+    <p>Name: ${user.displayName}</p>
+    <p>Email: ${user.email}</p>
+  `;
+}
+
+//Build function to send email here
+
+function checkAuthState() {
+  /*firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      document.getElementById('LoginScreen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      showUserDetails(user);
+    } else {
+    }
+  });*/
+}
+
+function LogoutUser() {
+  console.log('Logout Btn Call');
+  /*firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      document.getElementById('LoginScreen').style.display = 'block';
+      document.getElementById('dashboard').style.display = 'none';
+    })
+    .catch((e) => {
+      console.log(e);
+    });*/
+}
+checkAuthState();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //import 'firebase/compat/firestore';
 //import firebase from 'firebase';
 //import { GoogleAuthProvider,
