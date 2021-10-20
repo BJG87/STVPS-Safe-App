@@ -2,7 +2,13 @@
 
 import './style.css';
 import { initializeApp } from 'firebase/app';
-import { GoogleAuthProvider, getAuth, onAuthStateChanged } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+} from 'firebase/auth';
 // v9 compat packages are API compatible with v8 code
 import firebase from 'firebase/app';
 import firebase from 'firebase/compat/app';
@@ -19,84 +25,6 @@ import { GoogleAuthProvider, getAuth } from 'firebase/compat/auth';
 //import { getFirestore, addDoc, collection } from 'firebase/firestore';
 //import * as firebaseui from 'firebaseui';
 //import * as firebase from 'firebase';
-
-let db, auth;
-async function main() {
-  const firebaseConfig = {
-    apiKey: 'AIzaSyCVKn4k0QWRpEOJHgbl7ALgYUNV7o9kwGQ',
-    authDomain: 'stvps-safe-app.firebaseapp.com',
-    projectId: 'stvps-safe-app',
-    storageBucket: 'stvps-safe-app.appspot.com',
-    messagingSenderId: '628432699289',
-    appId: '1:628432699289:web:5dacd9e8687b0add921d08',
-  };
-  try {
-    if (firebaseConfig && firebaseConfig.apiKey) {
-      initializeApp(firebaseConfig);
-    }
-    auth = getAuth();
-    db = getFirestore();
-  } catch (e) {}
-}
-main();
-
-console.log('Hide Dashboard');
-document.getElementById('dashboard').style.display = 'none';
-console.log('Setup Event listener');
-
-// Initialize Firebase
-var firebase;
-//firebase.initializeApp(firebaseConfig);
-//initializeApp(firebaseConfig)
-document.getElementById('dashboard').style.display = 'none';
-
-document.getElementById('login').addEventListener('click', GoogleLogin);
-document.getElementById('logout').addEventListener('click', LogoutUser);
-
-let provider = new firebase.auth.GoogleAuthProvider();
-
-function GoogleLogin() {
-  console.log('Login Btn Call');
-  firebase
-    .auth()
-    .signInWithPopup(provider)
-    .then((res) => {
-      console.log(res.user);
-      document.getElementById('LoginScreen').style.display = 'none';
-      document.getElementById('dashboard').style.display = 'block';
-      //showUserDetails(res.user);
-      showForm(res.user);
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-}
-
-function checkAuthState() {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      document.getElementById('LoginScreen').style.display = 'none';
-      document.getElementById('dashboard').style.display = 'block';
-      showUserDetails(user);
-    } else {
-    }
-  });
-}
-
-function LogoutUser() {
-  console.log('Logout Btn Call');
-  firebase
-    .auth()
-    .signOut()
-    .then(() => {
-      document.getElementById('LoginScreen').style.display = 'block';
-      document.getElementById('dashboard').style.display = 'none';
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-}
-checkAuthState();
 
 //document.getElementById('login').addEventListener('click', GoogleLogin);
 
