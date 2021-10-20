@@ -41,10 +41,15 @@ console.log('Setup Event listener');
 //console.log(app);
 //var auth = getAuth(app);
 const app = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+auth.onAuthStateChanged(user => { 
+  // Check for user status
+});
 //var db = getFirestore(app);
 // } catch (e) {}
 //var provider = new GoogleAuthProvider();
-var provider = new firebase.auth.GoogleAuthProvider();
+//var provider = firebase.auth.GoogleAuthProvider(app);
+//var provider = new firebase.auth.GoogleAuthProvider();
 //const auth = getAuth();
 /*
   signInWithPopup(auth, provider)
