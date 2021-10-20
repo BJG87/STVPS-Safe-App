@@ -2,7 +2,14 @@
 
 import './style.css';
 import { initializeApp } from 'firebase/app';
-import {GoogleAuthProvider, auth, getAuth, signInWithPopup, signOut, onAuthStateChanged} from 'firebase/compat/auth';
+import {
+  GoogleAuthProvider,
+  auth,
+  getAuth,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+} from 'firebase/auth';
 /*import {
   GoogleAuthProvider,
   getAuth,
@@ -24,33 +31,33 @@ import {GoogleAuthProvider, auth, getAuth, signInWithPopup, signOut, onAuthState
 //import {GoogleAuthProvider, auth, getAuth, signInWithPopup, signOut, onAuthStateChanged} from 'firebase/compat/auth';
 //import 'firebase/compat/firestore';
 
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: 'AIzaSyCVKn4k0QWRpEOJHgbl7ALgYUNV7o9kwGQ',
+  authDomain: 'stvps-safe-app.firebaseapp.com',
+  projectId: 'stvps-safe-app',
+  storageBucket: 'stvps-safe-app.appspot.com',
+  messagingSenderId: '628432699289',
+  appId: '1:628432699289:web:5dacd9e8687b0add921d08',
+};
 
+const firebaseApp = initializeApp(firebaseConfig);
 
- // Initialize Firebase
- const firebaseConfig = {
-    apiKey: 'AIzaSyCVKn4k0QWRpEOJHgbl7ALgYUNV7o9kwGQ',
-    authDomain: 'stvps-safe-app.firebaseapp.com',
-    projectId: 'stvps-safe-app',
-    storageBucket: 'stvps-safe-app.appspot.com',
-    messagingSenderId: '628432699289',
-    appId: '1:628432699289:web:5dacd9e8687b0add921d08',
-  };
+document.getElementById('dashboard').style.display = 'none';
 
- const firebaseApp = initializeApp(firebaseConfig);
+document.getElementById('login').addEventListener('click', GoogleLogin);
+document.getElementById('logout').addEventListener('click', LogoutUser);
+//const auth = firebase.auth();
+//let provider = new firebase.auth.GoogleAuthProvider();
+let provider = new GoogleAuthProvider();
 
- document.getElementById('dashboard').style.display = 'none';
-
- document.getElementById('login').addEventListener('click', GoogleLogin);
- document.getElementById('logout').addEventListener('click', LogoutUser);
- //const auth = firebase.auth();
- //let provider = new firebase.auth.GoogleAuthProvider();
-
- function GoogleLogin() {
+function GoogleLogin() {
   console.log('Login Btn Call');
   const auth = getAuth(firebaseApp);
-  onAuthStateChanged(auth, user => {
-    // Check for user status
-  });
+  auth.signInWithPopup(provider);
+  //onAuthStateChanged(auth, user => {
+  // Check for user status
+  //});
   /*firebase
     .auth()
     .signInWithPopup(provider)
@@ -100,22 +107,6 @@ function LogoutUser() {
     });*/
 }
 checkAuthState();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //import 'firebase/compat/firestore';
 //import firebase from 'firebase';
